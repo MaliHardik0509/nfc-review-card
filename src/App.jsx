@@ -51,18 +51,20 @@ export default function App() {
       const name = params.get('name') || params.get('biz');
       const placeId = params.get('placeId') || params.get('placeid') || params.get('pid');
       const cid = params.get('cid');
+      const hex = params.get('hex') || params.get('lrd');
       const customReviewUrl = params.get('url');
       const rawCategory = params.get('cat') || params.get('category');
       const whatsapp = params.get('wa') || params.get('phone');
       const brand = params.get('brand');
       const resolvedCategory = detectCategory(name, rawCategory);
 
-      if (name || placeId || cid || customReviewUrl || rawCategory || whatsapp || brand) {
+      if (name || placeId || cid || hex || customReviewUrl || rawCategory || whatsapp || brand) {
         return {
           ...stored,
           businessName: name || 'Welcome!',
           placeId: placeId || '',
           cid: cid || '',
+          hex: hex || '',
           customReviewUrl: customReviewUrl || '',
           category: resolvedCategory,
           whatsapp: whatsapp || '',
