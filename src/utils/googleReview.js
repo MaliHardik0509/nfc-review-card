@@ -5,9 +5,12 @@ import confetti from 'canvas-confetti';
  * Google's official direct review URL format is:
  * https://search.google.com/local/writereview?placeid={PLACE_ID}
  */
-export function getGoogleReviewUrl({ placeId, customReviewUrl, businessName }) {
+export function getGoogleReviewUrl({ placeId, cid, customReviewUrl, businessName }) {
   if (customReviewUrl && customReviewUrl.trim().startsWith('http')) {
     return customReviewUrl.trim();
+  }
+  if (cid && cid.trim()) {
+    return `https://www.google.com/maps?cid=${encodeURIComponent(cid.trim())}`;
   }
   if (placeId && placeId.trim()) {
     return `https://search.google.com/local/writereview?placeid=${encodeURIComponent(placeId.trim())}`;

@@ -212,6 +212,7 @@ export default function CustomerReviewFlow(props) {
 
   const googleReviewUrl = getGoogleReviewUrl({
     placeId: config.placeId,
+    cid: config.cid,
     customReviewUrl: config.customReviewUrl,
     businessName: config.businessName
   });
