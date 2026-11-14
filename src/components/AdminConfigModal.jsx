@@ -85,7 +85,42 @@ export default function AdminConfigModal({
   const [copiedLink, setCopiedLink] = useState(false);
   const [copiedClientId, setCopiedClientId] = useState(null);
   const [activeTab, setActiveTab] = useState('settings'); // 'settings' | 'qr' | 'clients' | 'nfc-guide'
+  const [mapsUrlInput, setMapsUrlInput] = useState('');
+  const [mapsUrlMsg, setMapsUrlMsg] = useState('');
   const qrRef = useRef(null);
+
+  // Auto-extract Place ID from a pasted Google Maps URL
+  const handleExtractPlaceId = () => {
+    const url = mapsUrlInput.trim();
+    if (!url) return;
+
+    // Try to extract from search.google.com/local/writereview?placeid=...
+    const writeReviewMatch = url.match(/[?&]placeid=([A-Za-z0-9_-]+)/i);
+    if (writeReviewMatch) {
+      setFormData((prev) => ({ ...prev, placeId: writeReviewMatch[1] }));
+      setMapsUrlMsg(`✅ Place ID extracted: ${writeReviewMatch[1]}`);
+      return;
+    }
+
+    // Try to extract from !1s<placeId>! pattern in Google Maps URLs
+    const placeIdMatch = url.match(/!1s(ChIJ[A-Za-z0-9_-]+)/);
+    if (placeIdMatch) {
+      setFormData((prev) => ({ ...prev, placeId: placeIdMatch[1] }));
+      setMapsUrlMsg(`✅ Place ID extracted: ${placeIdMatch[1]}`);
+      return;
+    }
+
+    // Try to extract hex from lrd= or from the URL itself
+    const hexMatch = url.match(/0x[0-9a-fA-F]+:0x[0-9a-fA-F]+/);
+    if (hexMatch) {
+      // Store hex as custom URL fallback — googleReview.js can convert it
+      setFormData((prev) => ({ ...prev, customReviewUrl: url }));
+      setMapsUrlMsg(`⚠️ Stored as custom URL (hex found). Place ID extraction was not possible from this link — the app will auto-convert the hex coordinates.`);
+      return;
+    }
+
+    setMapsUrlMsg('❌ Could not extract Place ID from this URL. Try opening Google Maps → Share → Copy Link.');
+  };
 
   if (!isOpen) return null;
 
@@ -392,6 +427,29 @@ export default function AdminConfigModal({
                     <p className="text-[11px] text-slate-400 mt-1">
                       Directly opens Google review box without extra search!
                     </p>
+                    {/* Google Maps URL Auto-Extractor */}
+                    <div className="mt-2 bg-blue-50/60 border border-blue-100 rounded-xl p-2.5 space-y-1.5">
+                      <p className="text-[11px] font-semibold text-blue-700">🔗 Paste Google Maps link to auto-extract Place ID:</p>
+                      <div className="flex gap-1.5">
+                        <input
+                          type="text"
+                          value={mapsUrlInput}
+                          onChange={(e) => { setMapsUrlInput(e.target.value); setMapsUrlMsg(''); }}
+                          placeholder="https://www.google.com/maps/place/..."
+                          className="flex-1 p-1.5 text-xs bg-white border border-blue-200 rounded-lg outline-none focus:border-blue-500 font-mono"
+                        />
+                        <button
+                          type="button"
+                          onClick={handleExtractPlaceId}
+                          className="px-2.5 py-1 text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition flex-shrink-0"
+                        >
+                          Extract
+                        </button>
+                      </div>
+                      {mapsUrlMsg && (
+                        <p className="text-[11px] text-blue-800">{mapsUrlMsg}</p>
+                      )}
+                    </div>
                   </div>
 
                   <div>

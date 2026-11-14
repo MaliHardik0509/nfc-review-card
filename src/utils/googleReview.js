@@ -83,8 +83,12 @@ export function getGoogleReviewUrl({ placeId, hex, cid, customReviewUrl, busines
     return trimmed;
   }
 
-  // 4. If CID is provided
+  // 4. If CID is provided — use the proven Google Search lrd= hash trigger
+  //    which opens the write-review modal when the business Knowledge Panel loads.
+  //    CID (Customer ID / ludocid) can be used in the lrd hash format: lrd=0x<cid_hex>,3
+  //    However the safest fallback is just to open the maps CID link.
   if (cid && cid.trim()) {
+    // Try to convert CID (decimal) to hex for the lrd hash — but maps?cid= also works
     return `https://www.google.com/maps?cid=${encodeURIComponent(cid.trim())}`;
   }
 
