@@ -382,5 +382,67 @@ export const BUSINESS_CATEGORIES = [
       ],
     },
   },
+  {
+    id: 'jewellery',
+    name: 'Jewellery Showroom / Luxury Goods',
+    icon: 'Gem',
+    defaultTags: [
+      { id: 'purity', label: '100% Pure & Hallmarked', emoji: '💎' },
+      { id: 'designs', label: 'Exquisite & Unique Designs', emoji: '✨' },
+      { id: 'staff', label: 'Patient & Courteous Staff', emoji: '🧑‍💼' },
+      { id: 'pricing', label: 'Fair Making Charges & Transparent Rates', emoji: '🏷️' },
+      { id: 'craftsmanship', label: 'Flawless Finishing & Detailing', emoji: '💍' },
+      { id: 'trust', label: 'Trusted Family Jeweller', emoji: '🤝' },
+      { id: 'variety', label: 'Great Bridal & Daily Collection', emoji: '👑' },
+    ],
+    placeholders: {
+      dishOrDetail: 'e.g., Gold necklace, diamond ring, bridal bangle',
+      staffName: 'e.g., Sales executive name',
+    },
+    phrases: {
+      openers: [
+        "Hands down the most trusted and elegant jewellery showroom in town!",
+        "Had a truly wonderful experience purchasing jewellery here today!",
+        "What a magnificent collection! We were thoroughly impressed from start to finish.",
+        "Exceptional quality, stunning craftsmanship, and trustworthy service.",
+        "Easily a 5-star jewellery showroom. Would recommend to anyone looking for fine jewellery!",
+      ],
+      tagSentences: {
+        purity: [
+          "All pieces are 100% hallmarked and certified, giving complete peace of mind on purity.",
+          "Uncompromised purity and authenticity — you can buy with total confidence.",
+        ],
+        designs: [
+          "Their designs are breathtakingly beautiful, modern yet timeless, and stand out from the crowd.",
+          "A gorgeous selection of designs with tremendous attention to detail.",
+        ],
+        staff: [
+          "The staff was exceedingly polite, patient, and happily showed us dozens of designs without rushing.",
+          "Wonderful customer service — very knowledgeable, courteous, and attentive to our preferences.",
+        ],
+        pricing: [
+          "Very fair making charges and completely transparent pricing without hidden fees.",
+          "Honest billing and competitive rates for such premium craftsmanship.",
+        ],
+        craftsmanship: [
+          "The finishing, polish, and detailing of the ornaments are truly world-class.",
+          "Impeccable craftsmanship that you can immediately appreciate up close.",
+        ],
+        trust: [
+          "A highly reputed, dependable jeweller that our family will always return to.",
+          "Trust and integrity are evident in every interaction.",
+        ],
+        variety: [
+          "Incredible variety spanning traditional bridal wear, antique jewellery, and lightweight daily wear.",
+          "Great range of choices suitable for every occasion and budget.",
+        ],
+      },
+      closers: [
+        "Will definitely be our family's first choice for all future jewellery purchases! 10/10!",
+        "A well-deserved 5 stars. Highly recommended for genuine quality and service!",
+        "Couldn't be happier with our purchase. Thank you so much!",
+      ],
+    },
+  },
 ];
 

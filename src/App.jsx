@@ -14,6 +14,22 @@ const DEFAULT_CONFIG = {
   agencyBrand: 'Verified Review Partner',
 };
 
+function detectCategory(name, explicitCat) {
+  if (explicitCat) {
+    const norm = explicitCat.toLowerCase().trim();
+    if (norm === 'jewelry' || norm === 'jewellery' || norm === 'jewel') return 'jewellery';
+    return norm;
+  }
+  if (!name) return 'restaurant';
+  const lower = name.toLowerCase();
+  if (lower.includes('jewel') || lower.includes('gold') || lower.includes('diamond') || lower.includes('silver')) return 'jewellery';
+  if (lower.includes('salon') || lower.includes('spa') || lower.includes('barber') || lower.includes('hair') || lower.includes('beauty')) return 'salon';
+  if (lower.includes('clinic') || lower.includes('dental') || lower.includes('dentist') || lower.includes('doctor') || lower.includes('hospital') || lower.includes('health') || lower.includes('care')) return 'clinic';
+  if (lower.includes('hotel') || lower.includes('resort') || lower.includes('inn') || lower.includes('stay') || lower.includes('suites')) return 'hotel';
+  if (lower.includes('shop') || lower.includes('store') || lower.includes('mart') || lower.includes('supermarket') || lower.includes('boutique') || lower.includes('retail') || lower.includes('cloth')) return 'retail';
+  return 'restaurant';
+}
+
 export default function App() {
   const [config, setConfig] = useState(() => {
     // 1. Device-level defaults & stored settings
@@ -35,17 +51,18 @@ export default function App() {
       const name = params.get('name') || params.get('biz');
       const placeId = params.get('placeId') || params.get('placeid') || params.get('pid');
       const customReviewUrl = params.get('url');
-      const category = params.get('cat') || params.get('category');
+      const rawCategory = params.get('cat') || params.get('category');
       const whatsapp = params.get('wa') || params.get('phone');
       const brand = params.get('brand');
+      const resolvedCategory = detectCategory(name, rawCategory);
 
-      if (name || placeId || customReviewUrl || category || whatsapp || brand) {
+      if (name || placeId || customReviewUrl || rawCategory || whatsapp || brand) {
         return {
           ...stored,
           businessName: name || 'Welcome!',
           placeId: placeId || '',
           customReviewUrl: customReviewUrl || '',
-          category: category || 'restaurant',
+          category: resolvedCategory,
           whatsapp: whatsapp || '',
           agencyBrand: brand || stored.agencyBrand || 'Verified Review Partner',
         };
