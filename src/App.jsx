@@ -18,10 +18,12 @@ function detectCategory(name, explicitCat) {
   if (explicitCat) {
     const norm = explicitCat.toLowerCase().trim();
     if (norm === 'jewelry' || norm === 'jewellery' || norm === 'jewel') return 'jewellery';
+    if (norm === 'south_indian' || norm === 'south-indian' || norm === 'idli' || norm === 'southindian') return 'south_indian';
     return norm;
   }
   if (!name) return 'restaurant';
   const lower = name.toLowerCase();
+  if (lower.includes('idli') || lower.includes('vembo') || lower.includes('dosa') || lower.includes('udupi') || lower.includes('thatte') || lower.includes('south indian') || lower.includes('sambar')) return 'south_indian';
   if (lower.includes('jewel') || lower.includes('gold') || lower.includes('diamond') || lower.includes('silver')) return 'jewellery';
   if (lower.includes('salon') || lower.includes('spa') || lower.includes('barber') || lower.includes('hair') || lower.includes('beauty')) return 'salon';
   if (lower.includes('clinic') || lower.includes('dental') || lower.includes('dentist') || lower.includes('doctor') || lower.includes('hospital') || lower.includes('health') || lower.includes('care')) return 'clinic';

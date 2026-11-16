@@ -444,5 +444,89 @@ export const BUSINESS_CATEGORIES = [
       ],
     },
   },
+  {
+    id: 'south_indian',
+    name: 'South Indian / Idli / QSR',
+    icon: 'Utensils',
+    defaultTags: [
+      { id: 'idli', label: 'Heavenly Soft Jumbo Idli', emoji: '🫓' },
+      { id: 'sambar', label: 'Flavorful Sambar & Chutneys', emoji: '🥣' },
+      { id: 'podi', label: 'Irresistible Podi & Ghee Idli', emoji: '🧈' },
+      { id: 'service', label: 'Super Fast Service', emoji: '⚡' },
+      { id: 'value', label: 'Great Value for Money', emoji: '💰' },
+      { id: 'cleanliness', label: 'Spotlessly Clean & Hygienic', emoji: '🧼' },
+      { id: 'ambiance', label: 'Modern & Comfortable Ambiance', emoji: '✨' },
+      { id: 'authentic', label: 'Authentic South Indian Taste', emoji: '🌿' },
+      { id: 'portions', label: 'Generous & Filling Portions', emoji: '🍽️' },
+    ],
+    placeholders: {
+      dishOrDetail: 'e.g., Ghee Podi Idli, Plain Thatte Idli, Sambar',
+      staffName: 'e.g., Counter staff name',
+    },
+    phrases: {
+      openers: [
+        "What an incredible experience at VEMBO – Home of Jumbo Idli!",
+        "Finally found the most authentic Karnataka-style Thatte Idli in Ahmedabad!",
+        "Absolutely blown away by the softness and flavors here!",
+        "Such a unique and delightful South Indian dining experience!",
+        "VEMBO is a must-visit for every idli lover in the city!",
+        "Had an amazing time — the Jumbo Idlis lived up to every bit of the hype!",
+      ],
+      tagSentences: {
+        idli: [
+          "The Jumbo Thatte Idli is incredibly soft, light, and fluffy — unlike anything I've had before.",
+          "These idlis literally melt in your mouth! The texture is perfectly spongy and airy.",
+          "The signature Jumbo Idli is a true masterpiece — huge, pillowy-soft, and absolutely delicious.",
+        ],
+        sambar: [
+          "The sambar was piping hot, aromatic, and perfectly balanced between tangy and savory.",
+          "Fresh coconut chutney and flavorful sambar paired absolutely perfectly with the idlis.",
+          "Multiple varieties of chutney were on point — fresh, authentic, and very flavourful.",
+        ],
+        podi: [
+          "The Ghee Podi Idli is a game-changer — generously coated in spiced gunpowder and melted ghee.",
+          "The Podi Thatte Idli with ghee is rich, spicy, and utterly satisfying. A must-try!",
+          "Loved the Ghee Podi variant — the molagapodi spice level and ghee quantity were spot on.",
+        ],
+        service: [
+          "Service was impressively quick and efficient — food was served in no time.",
+          "Quick counter service with zero waiting — perfect for a fast and satisfying meal.",
+          "Super prompt service that made the whole experience seamless and enjoyable.",
+        ],
+        value: [
+          "Absolutely great value — a single Jumbo Idli is filling enough for a complete meal at a very reasonable price.",
+          "Pricing is very affordable considering the generous portion sizes and top-notch quality.",
+          "Value for money is excellent — you get a lot for every rupee spent here.",
+        ],
+        cleanliness: [
+          "The outlet is squeaky clean, well-maintained, and maintains excellent hygiene standards.",
+          "Spotlessly clean kitchen, counters, and dining area — hygienic QSR standards at their best.",
+          "Very hygienic setup that you notice immediately — a great sign for a food outlet.",
+        ],
+        ambiance: [
+          "The modern, neat, and minimalist decor creates a very comfortable and pleasant dining atmosphere.",
+          "Clean, contemporary, and well-lit space — a great spot for breakfast or an evening snack.",
+          "Comfortable seating with a refreshingly clean and modern vibe.",
+        ],
+        authentic: [
+          "Genuinely tastes like authentic Karnataka-style Thatte Idli — the real deal right here in Ahmedabad!",
+          "The flavors are incredibly authentic and transport you straight to South India.",
+          "VEMBO brings the true taste of Karnataka's iconic Bidadi-style Thatte Idli to our city.",
+        ],
+        portions: [
+          "The Jumbo Idli portions are incredibly generous — one is enough to fully satisfy your hunger.",
+          "Great portion sizes that give outstanding value and leave you pleasantly full.",
+          "The sheer size of the Jumbo Idli is impressive — truly lives up to its name!",
+        ],
+      },
+      closers: [
+        "Will definitely be a regular here! Highly recommended for all South Indian food lovers.",
+        "Already planning my next visit. VEMBO is now my go-to breakfast spot in Ahmedabad!",
+        "A well-deserved 5 stars — the best idli experience in the city, hands down!",
+        "If you haven't tried VEMBO yet, you're missing out. Go try the Jumbo Idli ASAP!",
+        "Wonderful experience! Keep up the amazing food and service!",
+      ],
+    },
+  },
 ];
 
